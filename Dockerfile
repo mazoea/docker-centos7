@@ -1,6 +1,6 @@
 FROM centos:7
 
-MAINTAINER jm
+MAINTAINER jm@mazoea.com
 
 WORKDIR /opt
 
