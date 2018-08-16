@@ -32,14 +32,15 @@ RUN VER=3.12.0 PACKAGE=cmake ; git clone https://gitlab.kitware.com/cmake/$PACKA
     ./bin/cmake -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_USE_OPENSSL:BOOL=ON . && \
     make install
 
-RUN VER=2.7.8 PACKAGE=Python-$VER URL=http://www.python.org/ftp/python/$VER/$PACKAGE.tgz ; cd /opt && wget -q --no-check-certificate $URL && \
-    tar xzvf $PACKAGE.tgz && \
-    cd $PACKAGE && \
-    ./configure --prefix=/usr/ && \
-    make && \
-    sudo make altinstall ; \
-\
-    echo '=================================================' && \
+# breaks yum in centos7
+#RUN VER=2.7.8 PACKAGE=Python-$VER URL=http://www.python.org/ftp/python/$VER/$PACKAGE.tgz ; cd /opt && wget -q --no-check-certificate $URL && \
+#    tar xzvf $PACKAGE.tgz && \
+#    cd $PACKAGE && \
+#    ./configure --prefix=/usr/ && \
+#    make && \
+#    sudo make altinstall
+
+RUN echo '=================================================' && \
     echo `$CC -v` && \
     echo `$CPP -v` && \
     echo `$CXX -v` && \
